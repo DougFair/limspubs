@@ -16,9 +16,14 @@
     margin-right: 50px;
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     color: white
 }
 
+.titleInstruct{
+    padding: 0;
+    margin-bottom: 0
+}
 .dateInputForm {
     margin-right: 5px
 }
