@@ -1,0 +1,16 @@
+.paperlistContainer {
+    margin-bottom: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.title {
+    font-weight: 700
+}
+
+.journal {
+    text-transform: capitalize;
+    font-style: italic;
+    color: red
+}
+

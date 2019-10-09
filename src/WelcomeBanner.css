@@ -1,0 +1,25 @@
+.container {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    text-align: center;
+    background-color: crimson; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    margin-top:40px
+}
+
+.bannerTitle {
+    font-size: 4rem;
+}
+
+
+
+.bannerText {
+    width: 50%;
+    height: 10%;
+
+}

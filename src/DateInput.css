@@ -1,0 +1,30 @@
+.dateInput {
+    background-color: black;
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    height: auto
+}
+
+.column {
+    display: inline-flex;
+    margin-right: 5px;
+    padding: 0
+}
+
+.searchTitle {
+    margin-right: 50px;
+    display: flex;
+    justify-content: flex-start;
+    color: white
+}
+
+.dateInputForm {
+    margin-right: 5px
+}
+
+.dateInputButton {
+    background-color: crimson;
+    margin: 2px 0 2px 0;
+    color:white
+}

@@ -1,0 +1,9 @@
+.abstractsContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.abstractItems p {
+    white-space:pre-wrap;
+}
