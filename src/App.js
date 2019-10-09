@@ -49,7 +49,7 @@ class App extends Component {
         let paperListString = idlist.toString();
         let paperList = []
       
-          axios.get( `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&rettype=abstract&id=${paperListString}&api_key=${process.env.APIKEY}`)
+          axios.get( `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&rettype=abstract&id=${paperListString}&api_key=9476810b14695bd14f228e63433facbf9c08`)
            .then(response => {
             this.setState({loading: false})
             idlist.forEach(id => {
