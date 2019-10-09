@@ -3,7 +3,6 @@ import './Abstracts.css'
 import LinkButton from './LinkButton'
 
 const Abstracts = (props) => {
-    console.log("abstract" + JSON.stringify(props.abstracts))
     let abstractDisplay = ""
     if (props.abstracts.length) {
     abstractDisplay = props.abstracts.map(ab => {
