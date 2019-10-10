@@ -53,11 +53,16 @@ class App extends Component {
            .then(response => {
             this.setState({loading: false})
             idlist.forEach(id => {
+              console.log("result" + JSON.stringify(response.data.result))
+
               let paperObj = {}
               let title = response.data.result[id].title
               let  journal = response.data.result[id].fulljournalname
               let  doi = response.data.result[id].elocationid
               let  authors = response.data.result[id].authors
+              let  volume = response.data.result[id].volume
+              let  pages = response.data.result[id].pages
+              let  pubdate = response.data.result[id].pubdate
               let authorList = []
               authors.map((author, idx) =>
               idx > 0
@@ -69,6 +74,9 @@ class App extends Component {
             paperObj.journal = journal;
             paperObj.authors = authorList.toString();
             paperObj.doi = doi;
+            paperObj.volume = volume;
+            paperObj.pages = pages;
+            paperObj.pubdate = pubdate;
             paperList.push(paperObj);
             })       
           })
@@ -98,6 +106,9 @@ addPapersInputedDate = idlist => {
             let  journal = response.data.result[id].fulljournalname
             let  doi = response.data.result[id].elocationid
             let  authors = response.data.result[id].authors
+            let  volume = response.data.result[id].volume
+            let  pages = response.data.result[id].pages
+            let  pubdate = response.data.result[id].pubdate
             let authorList = []
             authors.map((author, idx) =>
             idx > 0
@@ -108,6 +119,9 @@ addPapersInputedDate = idlist => {
           paperObj.title = title;
           paperObj.journal = journal;
           paperObj.authors = authorList.toString();
+          paperObj.volume = volume;
+          paperObj.pages = pages;
+          paperObj.pubdate = pubdate;
           paperObj.doi = doi;
           paperList.push(paperObj);
           }) 

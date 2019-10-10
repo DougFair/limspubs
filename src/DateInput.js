@@ -34,7 +34,7 @@ class DateInput extends Component {
          
            
                 <div className="searchTitle">
-                    <p>CUSTOM DATE SEARCH: You must enter a Start Date. If you don't enter an End Date it will default to today.</p>
+                    <p>CUSTOM DATE SEARCH: You must enter a Start Date. If you do not enter an End Date it will default to today.</p>
                     </div>
                 
                 <form  className="dateInputForm" onSubmit={this.handleSubmit} style={{marginRight: 0}}>

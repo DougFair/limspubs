@@ -17,18 +17,29 @@ const PapersDisplay = (props) => {
     )
   }
   if(props.papersListInputedDate.length){
-    const inputedDate = props.papersListInputedDate.map(data => 
+    const inputedDate = props.papersListInputedDate.map(data => {
+      let volume = ""
+      if (data.volume === "") {
+        volume = " volume/pages not yet available"
+      } else {
+      volume = `${data.volume}: `
+    }
+
+      return(
       <div className="paperlistContainer"
-      key={data.id}>
-      <span>
+        key={data.id}>
+        <span>
         <span className="title">{`${data.title} `}</span>
         <span className="authors">{`${data.authors}, `}</span>
-        <span className="journal">{`${data.journal},  `}</span>
+        <span className="journal">{`${data.journal}  `}</span>
+        <span className="volume">{`${volume} `}</span>
+        <span className="pages">{`${data.pages},  `}</span>
+        <span className="pubdate">Publication date: {`${data.pubdate},  `}</span>
         <span className="doi">{`${data.doi}, `}</span>
         <span className="pmid">PMID: <a href={`https://www.ncbi.nlm.nih.gov/pubmed/${data.id}`} target="_blank">{data.id}.</a></span>
-      </span>
-      </div>
-  )
+        </span>
+        </div>
+    )})
   return (
     <div>
       {!props.inputedDate2 ? 
@@ -49,19 +60,29 @@ const PapersDisplay = (props) => {
     </div>
   )
   } else {
-    const month = props.papersList.map(data => 
-    
-        <div className="paperlistContainer"
+    const month = props.papersList.map(data => {
+      let volume = ""
+      if (data.volume === "") {
+        volume = " volume/pages not yet available"
+      } else {
+      volume = `${data.volume}: `
+    }
+
+      return(
+      <div className="paperlistContainer"
         key={data.id}>
         <span>
-          <span className="title">{`${data.title} `}</span>
-          <span className="authors">{`${data.authors}, `}</span>
-          <span className="journal">{`${data.journal},  `}</span>
+        <span className="title">{`${data.title} `}</span>
+        <span className="authors">{`${data.authors}, `}</span>
+        <span className="journal">{`${data.journal}  `}</span>
+        <span className="volume">{`${volume} `}</span>
+        <span className="pages">{`${data.pages},  `}</span>
+        <span className="pubdate">Publication date: {`${data.pubdate},  `}</span>
           <span className="doi">{`${data.doi}, `}</span>
           <span className="pmid">PMID: <a href={`https://www.ncbi.nlm.nih.gov/pubmed/${data.id}`} target="_blank">{data.id}.</a></span>
         </span>
         </div>
-    )
+    )})
      
     return (
         <div style={{margin: "10px 50px 10px 50px"}}>        
