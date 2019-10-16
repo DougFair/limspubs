@@ -1,0 +1,20 @@
+
+.errorMessage {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content:center;
+}
+
+.errorButton {
+    background-color:red;
+     height: 2rem;
+     color:white;
+     margin-left: 10px;
+}
+
+.instituteTitle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}

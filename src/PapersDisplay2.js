@@ -1,16 +1,17 @@
 import React from 'react'
 import './PaperDisplay.css'
 import moment from 'moment';
+import {Link} from 'react-router-dom'
 import LinkButton from './LinkButton'
 
 const PapersDisplay = (props) => {
   if((props.inputedDate1 || props.inputedDate2) &&!props.papersListInputedDate.length) {
     return (
-      <div className="noPapers">
+      <div>
       {!props.inputedDate2 ? 
-      <h2>No papers published since {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")}</h2>
+      <h2>No papers published at LIMS since {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")}</h2>
       : 
-      <h2 className="noPapers">No papers published between {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")} - {moment(props.inputedDate2, "YYYY-MM-DD").format("DD/MM/YYYY")} </h2>
+      <h2>No papers published at LIMS between {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")} - {moment(props.inputedDate2, "YYYY-MM-DD").format("DD/MM/YYYY")} </h2>
       }
     </div>
     )
@@ -35,7 +36,7 @@ const PapersDisplay = (props) => {
         <span className="pages">{`${data.pages},  `}</span>
         <span className="pubdate">Publication date: {`${data.pubdate},  `}</span>
         <span className="doi">{`${data.doi}, `}</span>
-        <span className="pmid">PMID: <a href={`https://www.ncbi.nlm.nih.gov/pubmed/${data.id}`} target="_blank" rel="noopener noreferrer">{data.id}.</a></span>
+        <span className="pmid">PMID: <a href={`https://www.ncbi.nlm.nih.gov/pubmed/${data.id}`} target="_blank">{data.id}.</a></span>
         </span>
         </div>
     )})
@@ -43,12 +44,12 @@ const PapersDisplay = (props) => {
     <div>
       {!props.inputedDate2 ? 
       <div style={{display:"flex", alignItems: "center"}}>
-      <h2>Papers published since {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")}</h2>
+      <h2>LIMS papers published since {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")}</h2>
       <LinkButton to='/abstracts' style={{marginLeft:"20px"}}>Retrieve Abstracts</LinkButton>
       </div>
       :
       <div style={{display:"flex", alignItems: "center"}}>
-        <h2>Papers published between {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")} - {moment(props.inputedDate2, "YYYY-MM-DD").format("DD/MM/YYYY")} </h2>
+        <h2>LIMS papers published between {moment(props.inputedDate1, "YYYY-MM-DD").format("DD/MM/YYYY")} - {moment(props.inputedDate2, "YYYY-MM-DD").format("DD/MM/YYYY")} </h2>
         <LinkButton to='/abstracts' style={{marginLeft:"20px"}}>Retrieve Abstracts</LinkButton>
       </div>
       
@@ -78,7 +79,7 @@ const PapersDisplay = (props) => {
         <span className="pages">{`${data.pages},  `}</span>
         <span className="pubdate">Publication date: {`${data.pubdate},  `}</span>
           <span className="doi">{`${data.doi}, `}</span>
-          <span className="pmid">PMID: <a href={`https://www.ncbi.nlm.nih.gov/pubmed/${data.id}`} target="_blank" rel="noopener noreferrer">{data.id}.</a></span>
+          <span className="pmid">PMID: <a href={`https://www.ncbi.nlm.nih.gov/pubmed/${data.id}`} target="_blank">{data.id}.</a></span>
         </span>
         </div>
     )})
@@ -90,7 +91,7 @@ const PapersDisplay = (props) => {
             <LinkButton to='/abstracts' style={{marginLeft:"20px"}}>Retrieve Abstracts</LinkButton>
           </div>
           {!props.papersList.length ? 
-          <p className="noPapers">No papers published in the last 30 days.</p>
+          <p>There were no LIMS papers published yesterday in the last 30 days.</p>
           : month}
         </div>
     )

@@ -17,9 +17,3 @@
 .volume {
     font-style: italic;
 }
-
-.noPapers{
-    display: flex;
-    justify-content: center;
-    color: crimson;
-}

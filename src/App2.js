@@ -20,16 +20,12 @@ class App extends Component {
     inputedDate1: "",
     inputedDate2: "",
     loading: false,
-    institute: "La Trobe Institute for Molecular Science",
-    urlunencoded: "",
-    dateinputError: false,
   }
 
   componentDidMount () {
-    console.log("In Mount")
     this.setState({loading: true})
-    let institute = this.state.institute
-    const urlunencoded = `((${institute}[Affiliation]) AND ("`
+
+    const urlunencoded = `((La Trobe Institute for Molecular Science[Affiliation]) AND ("`
     this.setState({urlunencoded})
     
     const dateParams = `${this.state.dateMinus30}"[Date - Entrez] : "3000"[Date - Entrez])`
@@ -143,7 +139,8 @@ addPapersInputedDate = idlist => {
 
 
 addAbstracts = idlist => {
-    let abstractList = [];
+  let abstractList = [];
+
     let abstractObj = {};
     let idlistString = idlist.toString()
     axios.get(
@@ -160,10 +157,6 @@ addAbstracts = idlist => {
 
 
 dateInput = (date1, date2) => {
-  if (date1 === "Error"){
-    this.setState({dateInputError: true})
-    return null
-  } else {
   this.setState({inputedDate1:date1, inputedDate2:date2})
   
   const convertedDate1 = moment(date1, "YYYY-MM-DD").format("YYYY/MM/DD")
@@ -189,40 +182,13 @@ dateInput = (date1, date2) => {
       this.addPapersInputedDate(this.state.idlistInputedDate)
       }
   ) 
-)}}
+)}
 
-instituteSelect = (institute) => {
-  this.setState({loading: true, institute: institute})
-  const urlunencoded = `((${institute}[Affiliation]) AND ("`
-  this.setState({urlunencoded})
-  const dateParams = `${this.state.dateMinus30}"[Date - Entrez] : "3000"[Date - Entrez])`
-  const urlEncoded = encodeURIComponent(urlunencoded)
-  const dateParamsEncoded = encodeURIComponent(dateParams)
-  const url =  `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=1000&term=${urlEncoded}${dateParamsEncoded}`
-  
-  axios.get(url)
-  .then(response => {
-    this.setState({idlist: response.data.esearchresult.idlist, loading:false}, () => {
-      this.addPapers(this.state.idlist)
-      })
-  })}
-
-
-dateInputReset = () => this.setState({dateInputError:false})
 
   render() {
     let papersDisplay = ""
     let abstracts = ""
-    let dateError = ""
-    if (this.state.dateInputError) {
-        dateError = 
-        <div className="errorMessage">
-          <h1>You must enter a start date!</h1>
-          <form onSubmit={this.dateInputReset}>
-            <button className="errorButton">Click to Re-enter Dates!</button>
-          </form>
-        </div>
-  } else {
+
       papersDisplay =  <PapersDisplay 
       papersList = {this.state.papersList}
       papersListWeek = {this.state.papersListWeek}
@@ -241,7 +207,6 @@ dateInputReset = () => this.setState({dateInputError:false})
         abstracts = <Spinner />
       }
 
-    }
     return ( 
       <div className="App">
       <Switch>
@@ -250,19 +215,9 @@ dateInputReset = () => this.setState({dateInputError:false})
             <WelcomeBanner />
             <DateInput
               dateInput = {this.dateInput}
-              instituteSelect = {this.instituteSelect}
             /> 
-            {dateError ? 
-            <div className="displayContainer">
-            {dateError}
-            </div>
-            :
-            <div className="displayContainer">
-            <h1 className="instituteTitle">{this.state.institute}</h1>
             {papersDisplay}
-            </div>
-            }
-            
+
             </>
             } 
             />
